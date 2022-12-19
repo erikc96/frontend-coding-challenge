@@ -295,3 +295,23 @@ a:hover {
   font-size: 1.5rem;
   margin: 0rem 3rem
 }
+
+.Select {
+  padding-bottom: 7px;
+  padding-top: 7px;
+  background-color: var(--rs-input-bg);
+  border-style: solid;
+  border-radius: .5rem;
+  color: #575757;
+  color: var(--rs-text-primary);
+  left: 0;
+  outline: none;
+  padding-left: 10px;
+  padding-right: 32px;
+  top: 0;
+  width: 100%;
+}
+
+.Input {
+
+}

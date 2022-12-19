@@ -14,6 +14,7 @@
     "@types/react-date-range": "^1.4.4",
     "@types/react-dom": "^18.0.0",
     "@types/turf": "^3.5.32",
+    "fuzzy-search": "^3.2.1",
     "jsts": "^2.9.3",
     "mapbox-gl": "^2.11.1",
     "react": "^18.1.0",
@@ -49,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "@types/fuzzy-search": "^2.1.2",
     "@types/jsts": "^0.17.14"
   }
 }

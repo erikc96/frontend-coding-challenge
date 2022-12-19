@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react"
+import FuzzySearch from 'fuzzy-search'; // Or: var FuzzySearch = require('fuzzy-search');
 import { EMPTY_COLLECTION, initialMapState } from "../constants"
 import { GlobalStateContext } from "../contexts/GlobalStateContext"
 import { Country, Earthquake, Filters, GlobalState, MapState, RawData, Selected } from "../types"
@@ -126,10 +127,20 @@ const useEarthquakes: UseEarthquakes = ({ earthquakes, countries, initialized })
     .filter((earthquake) => filterWithDateRange(earthquake, filters.range || {})),
     [earthquakes, countries, filters])
 
-  const filteredEarthquakeIds = filteredEarthquakes.map((earthquake) => (earthquake.id))
+  const searcher = new FuzzySearch(filteredEarthquakes, ["properties.title", "properties.description", "properties.place", "properties.mag"], {
+    caseSensitive: true,
+  });
+  const searchedEarthquakes = useMemo(() => {
+    if (filters.fuzzy) {
+      return searcher.search(filters.fuzzy);
+    }
+    return filteredEarthquakes;
+  }, [filters.fuzzy, filteredEarthquakes])
+
+  const filteredEarthquakeIds = searchedEarthquakes.map((earthquake: any) => (earthquake.id))
 
 
-  return { filteredEarthquakes, filters, setFilters, filteredEarthquakeIds, earthquakesById };
+  return { filteredEarthquakes: searchedEarthquakes, filters, setFilters, filteredEarthquakeIds, earthquakesById };
 
 }
 

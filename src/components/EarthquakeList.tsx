@@ -7,7 +7,7 @@ export const EarthquakeList = () => {
   const { initialized, filteredEarthquakes, mapState, setMapState, selected, setSelected } = useGlobalStateContext();
 
   const handleResizeForLargeText = (text: string) => {
-    const MAGIC_NUMBER = 24
+    const MAGIC_NUMBER = 22
     if (text.length > MAGIC_NUMBER) {
       return text.slice(0, MAGIC_NUMBER) + '...'
     }

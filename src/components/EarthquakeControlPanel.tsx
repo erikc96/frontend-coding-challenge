@@ -13,7 +13,7 @@ export const EarthquakeControlPanel = () => {
       <DateRangeSelector filters={filters} setFilters={setFilters} />
       <div>
         <label>Country</label>
-        <select value={filters.country} onChange={(e) => {
+        <select className="Select rs-picker-toggle " value={filters.country} onChange={(e) => {
           setFilters({ ...filters, country: e.target.value });
           const country = getCountryByName(e.target.value, countries)
           centerOnCountry(country, mapState, setMapState)
@@ -24,11 +24,15 @@ export const EarthquakeControlPanel = () => {
       </div>
       <div>
         <label>Magnitude (&gt;=)</label>
-        <select value={filters.magnitude} onChange={(e) => { setFilters({ ...filters, magnitude: Number(e.target.value) }); }}>
+        <select className="Select rs-picker-toggle " value={filters.magnitude} onChange={(e) => { setFilters({ ...filters, magnitude: Number(e.target.value) }); }}>
           <option value="0">0</option>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((magnitude) => <option value={magnitude}>{magnitude}</option>)}
         </select>
       </div>
-    </div>
+      <div>
+        <label> Fuzzy </label>
+        <input className="Input rs-picker-toggle rs-btn rs-btn-default" type='text' value={filters.fuzzy} onChange={(e) => { setFilters({ ...filters, fuzzy: e.target.value }); }} />
+      </div>
+    </div >
   )
 }
