@@ -13,6 +13,7 @@ export const DateRangeSelector = ({ filters, setFilters }: { filters: GlobalStat
       <label>Date Range</label>
       <DateRangePicker
         hoverRange="month" ranges={[]}
+        onClean={() => setFilters({ ...filters, range: undefined })}
         onChange={(range: any) => {
           setFilters({
             ...filters, range: { startDate: range[0], endDate: range[1] }

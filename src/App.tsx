@@ -21,6 +21,7 @@ function App() {
   useSelected(globalState)
   const selectedEarthquake = selected.earthquakeId ? earthquakesById[selected.earthquakeId] : null
 
+  console.log("App.tsx", { globalState })
   return (
     <div className="parent">
       <GlobalStateContext.Provider value={globalState}>

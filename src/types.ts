@@ -48,6 +48,7 @@ export interface RawData {
 }
 
 export interface Filters {
+  fuzzy?: string;
   country?: string;
   magnitude?: number;
   range?: { startDate: Date, endDate: Date }
