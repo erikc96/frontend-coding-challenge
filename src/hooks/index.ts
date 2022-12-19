@@ -38,6 +38,7 @@ export const usePagination = (data: any[], pageSize: number) => {
   const [currentPage, setCurrentPage] = React.useState(1);
   const maxPage = Math.ceil(data.length / pageSize);
   const paginatedData = data.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+  const setPage = (page: number) => { setCurrentPage(page) }
   const goToNextPage = () => setCurrentPage(currentPage + 1);
   const goToPreviousPage = () => setCurrentPage(currentPage - 1);
   const goToPage = (page: number) => setCurrentPage(page);
@@ -53,6 +54,7 @@ export const usePagination = (data: any[], pageSize: number) => {
       goToNextPage,
       goToPreviousPage,
       goToPage,
+      setPage
     }
   }
   return [paginatedData, getPaginationProps] as const;

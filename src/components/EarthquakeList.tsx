@@ -3,11 +3,11 @@ import { useGlobalStateContext, usePagination } from "../hooks";
 import { Earthquake } from "../types";
 import { drawPopup } from "./Map";
 
+const MAGIC_NUMBER = 22
 export const EarthquakeList = () => {
   const { initialized, filteredEarthquakes, mapState, setMapState, selected, setSelected } = useGlobalStateContext();
 
   const handleResizeForLargeText = (text: string) => {
-    const MAGIC_NUMBER = 22
     if (text.length > MAGIC_NUMBER) {
       return text.slice(0, MAGIC_NUMBER) + '...'
     }
@@ -34,7 +34,15 @@ export const EarthquakeList = () => {
     maxPage,
     goToNextPage,
     goToPreviousPage,
+    setPage
   } = getPaginationProps();
+
+  React.useEffect(() => {
+    if (selected.earthquakeId) {
+      const index = filteredEarthquakes.findIndex((earthquake: Earthquake) => earthquake.id === selected.earthquakeId)
+      setPage(Math.ceil((index + 1) / 25))
+    }
+  }, [selected])
 
   if (!initialized) return <div>Loading...</div>
   // List of earthquakes; earthquakes are color coded by severity
@@ -42,11 +50,13 @@ export const EarthquakeList = () => {
     <div className="Earthquake-List">
       <ul>
         {paginatedData.map((earthquake: Earthquake) => {
-          return (<li onClick={() => handleEarthquakeClick(earthquake)}>
-            M<span className={"Earthquake-Magnitude Earthquake-Magnitude-" + Math.floor(earthquake.properties.mag)}>
-              {Math.round(earthquake.properties.mag * 100) / 100}
-            </span> - <span>{handleResizeForLargeText(earthquake.properties.place)}</span>
-          </li>)
+          return (
+            <li className={earthquake.id === selected.earthquakeId ? "Earthquake-Selected" : ""} onClick={() => handleEarthquakeClick(earthquake)}>
+                M<span className={"Earthquake-Magnitude Earthquake-Magnitude-" + Math.floor(earthquake.properties.mag)}>
+                  {Math.round(earthquake.properties.mag * 100) / 100}
+                </span> - <span>{handleResizeForLargeText(earthquake.properties.place)}</span>
+            </li>
+          )
         })}
       </ul>
       <div className="Pagination">
