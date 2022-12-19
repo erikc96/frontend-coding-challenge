@@ -39,10 +39,7 @@
 
 .Earthquake-List {
   margin-top: 10rem;
-
 }
-
-
 
 .mapboxgl-ctrl-attrib {
   display: none;
@@ -79,26 +76,24 @@ footer {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 3rem 3rem
+  margin: 3rem 3rem;
 }
 
 .Earthquake-Control-Panel > div > div {
-
 }
 
-
-.Earthquake-Control-Panel > div{
+.Earthquake-Control-Panel > div {
   margin: 0 1rem;
   display: flex;
   flex-direction: column;
 }
 
-.Earthquake-List { 
+.Earthquake-List {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 3rem 3rem
+  margin: 3rem 3rem;
 }
 
 /* Display earthquake list items in a grid on desktop */
@@ -116,23 +111,23 @@ footer {
   display: flex;
   justify-content: left;
   align-items: center;
-  padding: .5rem;
+  padding: 0.5rem;
   padding-left: 1rem;
-  margin: .25rem;
+  margin: 0.25rem;
   border-radius: 1rem;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
-  font-size: .7rem;
+  font-size: 0.7rem;
   font-weight: 500;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   cursor: pointer;
 }
 
 .Earthquake-List li > span {
   /* text formatting */
-  font-size: .7rem;
-  font-family: 'Roboto', sans-serif;
-  margin-right: .1rem;
-  padding: .1rem;
+  font-size: 0.7rem;
+  font-family: "Roboto", sans-serif;
+  margin-right: 0.1rem;
+  padding: 0.1rem;
 }
 
 .Earthquake-Magnitude {
@@ -142,11 +137,10 @@ footer {
   align-items: center;
   width: 1.5rem;
   height: 1.5rem;
-  font-size: .7rem;
+  font-size: 0.7rem;
   border-radius: 50%;
-  margin-right: .5rem;
-  margin-left: .1rem;
-
+  margin-right: 0.5rem;
+  margin-left: 0.1rem;
 }
 
 .Earthquake-List li:hover {
@@ -215,27 +209,23 @@ footer {
   background-color: #000000;
 }
 
-
-
 .Author-Attributes {
   display: flex;
   flex-direction: row;
   justify-content: right;
   align-items: center;
-  margin: 3rem 3rem
-
-
+  margin: 3rem 3rem;
 }
 .Author-Attribute {
   margin: 0 1rem;
   display: flex;
   flex-direction: column;
 }
-.Author-Attribute > div{
+.Author-Attribute > div {
   margin: 0 1rem;
   display: flex;
   flex-direction: column;
-  font-size: .7rem;
+  font-size: 0.7rem;
   line-height: 1.5rem;
 }
 
@@ -244,9 +234,9 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 3rem 3rem
+  margin: 3rem 3rem;
 }
-.Pagination > div{
+.Pagination > div {
   margin-bottom: 1rem;
 }
 .Pagination .next {
@@ -277,13 +267,13 @@ a:hover {
 .round {
   border-radius: 50%;
 }
-.mapboxgl-popup > div  {
+.mapboxgl-popup > div {
   border-radius: 1rem;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 }
 .mapboxgl-popup-close-button {
-  margin-right: .7rem;
-  margin-top: .7rem;
+  margin-right: 0.7rem;
+  margin-top: 0.7rem;
 }
 
 .Header {
@@ -293,7 +283,7 @@ a:hover {
   align-items: center;
   font-weight: 600;
   font-size: 1.5rem;
-  margin: 0rem 3rem
+  margin: 0rem 3rem;
 }
 
 .Select {
@@ -301,7 +291,7 @@ a:hover {
   padding-top: 7px;
   background-color: var(--rs-input-bg);
   border-style: solid;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   color: #575757;
   color: var(--rs-text-primary);
   left: 0;

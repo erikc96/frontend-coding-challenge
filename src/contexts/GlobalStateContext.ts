@@ -10,11 +10,13 @@ export const GlobalStateContext = React.createContext<GlobalState>({
   countries: [],
   filteredEarthquakes: [],
   filters: {},
-  setFilters: () => { },
+  setFilters: () => {},
   mapState: initialMapState,
-  setMapState: () => { },
+  setMapState: () => {},
   filteredEarthquakeIds: [],
   earthquakesById: {},
   selected: { earthquakeId: null },
-  setSelected: () => { console.log("Error initializing context") }
+  setSelected: () => {
+    console.log("Error initializing context");
+  },
 });

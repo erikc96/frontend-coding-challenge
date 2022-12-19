@@ -1,27 +1,28 @@
-import React, { useMemo, useRef, useState } from 'react';
-import logo from './logo.svg';
-import ReactDOMServer from 'react-dom/server'
-import './App.css';
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css'; // theme css file
-import 'mapbox-gl/dist/mapbox-gl.css'
-import mapboxgl, { Point } from 'mapbox-gl';
-import * as turf from '@turf/turf';
-import { Map } from './components/Map';
-import { EarthquakeList } from './components/EarthquakeList';
-import { EarthquakeControlPanel } from './components/EarthquakeControlPanel';
-import { EarthquakeDetails } from './components/EarthquakeDetails';
-import { GlobalStateContext } from './contexts/GlobalStateContext';
-import { useGlobalState, useSelected } from './hooks';
-
+import React, { useMemo, useRef, useState } from "react";
+import logo from "./logo.svg";
+import ReactDOMServer from "react-dom/server";
+import "./App.css";
+import "react-date-range/dist/styles.css"; // main style file
+import "react-date-range/dist/theme/default.css"; // theme css file
+import "mapbox-gl/dist/mapbox-gl.css";
+import mapboxgl, { Point } from "mapbox-gl";
+import * as turf from "@turf/turf";
+import { Map } from "./components/Map";
+import { EarthquakeList } from "./components/EarthquakeList";
+import { EarthquakeControlPanel } from "./components/EarthquakeControlPanel";
+import { EarthquakeDetails } from "./components/EarthquakeDetails";
+import { GlobalStateContext } from "./contexts/GlobalStateContext";
+import { useGlobalState, useSelected } from "./hooks";
 
 function App() {
-  const globalState = useGlobalState()
-  const { selected, mapState, earthquakesById, setMapState } = globalState
-  useSelected(globalState)
-  const selectedEarthquake = selected.earthquakeId ? earthquakesById[selected.earthquakeId] : null
+  const globalState = useGlobalState();
+  const { selected, mapState, earthquakesById, setMapState } = globalState;
+  useSelected(globalState);
+  const selectedEarthquake = selected.earthquakeId
+    ? earthquakesById[selected.earthquakeId]
+    : null;
 
-  console.log("App.tsx", { globalState })
+  console.log("App.tsx", { globalState });
   return (
     <div className="parent">
       <GlobalStateContext.Provider value={globalState}>
@@ -55,10 +56,9 @@ function App() {
               <div className="Author-Attribute-value">MIT</div>
             </div>
           </div>
-
         </footer>
-      </GlobalStateContext.Provider >
-    </div >
+      </GlobalStateContext.Provider>
+    </div>
   );
 }
 

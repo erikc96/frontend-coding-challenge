@@ -1,14 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { createRoot } from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
 /** Import styles on demand */
-import 'rsuite/dist/rsuite.min.css'
+import "rsuite/dist/rsuite.min.css";
 
-const container = document.getElementById('root');
+const container = document.getElementById("root");
 const root = createRoot(container as HTMLElement);
 
 root.render(<App />);

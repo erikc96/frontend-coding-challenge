@@ -1,6 +1,5 @@
-
 export interface EarthquakeProperties {
-  [k: string]: (string | number | null);
+  [k: string]: string | number | null;
   mag: number;
   place: string;
   time: number;
@@ -19,39 +18,42 @@ export interface Earthquake {
   properties: EarthquakeProperties;
   geometry: {
     coordinates: [number, number, number];
-  }
+  };
   id: string;
 }
 
 export interface EarthquakeCollection {
   type: string;
   metadata: {
-    generated: number
-    url: string
-    title: string
-    status: number
-    api: string
-    count: number
-  }
-  features: Earthquake[]
-
+    generated: number;
+    url: string;
+    title: string;
+    status: number;
+    api: string;
+    count: number;
+  };
+  features: Earthquake[];
 }
 
-export type Country = { type: string; properties: { ADMIN: string }; geometry: { coordinates: [number, number][][][] } };
+export type Country = {
+  type: string;
+  properties: { ADMIN: string };
+  geometry: { coordinates: [number, number][][][] };
+};
 
 export type CountryCollection = { type: string; features: Country[] };
 
 export interface RawData {
-  earthquakeCollection: EarthquakeCollection
-  countryCollection: CountryCollection
-  initialized: boolean
+  earthquakeCollection: EarthquakeCollection;
+  countryCollection: CountryCollection;
+  initialized: boolean;
 }
 
 export interface Filters {
   fuzzy?: string;
   country?: string;
   magnitude?: number;
-  range?: { startDate: Date, endDate: Date }
+  range?: { startDate: Date; endDate: Date };
 }
 
 export interface MapState {
@@ -62,7 +64,7 @@ export interface MapState {
 }
 
 export interface Selected {
-  earthquakeId: string | null
+  earthquakeId: string | null;
 }
 
 export interface GlobalState {
@@ -70,7 +72,7 @@ export interface GlobalState {
   countryCollection: CountryCollection;
   earthquakes: Earthquake[];
   countries: Country[];
-  initialized: boolean
+  initialized: boolean;
   filteredEarthquakes: Earthquake[];
   filters: Filters;
   setFilters: (filters: Filters) => void;
