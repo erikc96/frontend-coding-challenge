@@ -1,0 +1,269 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.Earthquake-List {
+  margin-top: 10rem;
+
+}
+
+
+
+.mapboxgl-ctrl-attrib {
+  display: none;
+  visibility: hidden;
+}
+
+.parent {
+  display: grid;
+  grid-template: auto 1fr auto / auto 1fr auto;
+}
+header {
+  padding: 2rem;
+  grid-column: 1 / 4;
+}
+
+.left-side {
+  grid-column: 1 / 2;
+}
+
+main {
+  grid-column: 2 / 3;
+}
+
+.right-side {
+  grid-column: 3 / 4;
+}
+
+footer {
+  grid-column: 1 / 4;
+}
+
+.Earthquake-Control-Panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem 3rem
+}
+
+
+.Earthquake-Control-Panel > div{
+  margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.Earthquake-List { 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem 3rem
+}
+
+/* Display earthquake list items in a grid on desktop */
+.Earthquake-List ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 1rem;
+  width: 100%;
+  max-width: 1200px;
+  /* margin between elements */
+}
+
+.Earthquake-List li {
+  /* clickable container-width box with drop shadow, with text formatting */
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: .5rem;
+  padding-left: 1rem;
+  margin: .25rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  font-size: .7rem;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+}
+
+.Earthquake-List li > span {
+  /* text formatting */
+  font-size: .7rem;
+  font-family: 'Roboto', sans-serif;
+  margin-right: .1rem;
+  padding: .1rem;
+}
+
+.Earthquake-Magnitude {
+  /* force magnitude to be a circle, on one line */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: .7rem;
+  border-radius: 50%;
+  margin-right: .5rem;
+  margin-left: .1rem;
+
+}
+
+.Main-Earthquake-Details-Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem 3rem
+}
+
+/* Background Colors for Earthquake List Items color coded by magnitude */
+.Earthquake-Magnitude-0 {
+  /* gray */
+  background-color: #e0e0e0;
+}
+.Earthquake-Magnitude-1 {
+  /* light green */
+  background-color: #b2dfdb;
+}
+.Earthquake-Magnitude-2 {
+  /* green */
+  background-color: #00ff00;
+}
+.Earthquake-Magnitude-3 {
+  /* blue */
+  background-color: #1e90ff;
+}
+.Earthquake-Magnitude-4 {
+  /* yellow */
+  background-color: #ffff00;
+}
+.Earthquake-Magnitude-5 {
+  /* Orange */
+  background-color: #ffa500;
+}
+.Earthquake-Magnitude-6 {
+  /* pink */
+  background-color: #ff1493;
+}
+.Earthquake-Magnitude-7 {
+  /* deep red */
+  background-color: #8b0000;
+}
+.Earthquake-Magnitude-8 {
+  /* purple */
+  background-color: #800080;
+}
+.Earthquake-Magnitude-9 {
+  /* black */
+  background-color: #000000;
+}
+
+
+
+.Author-Attributes {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
+  margin: 3rem 3rem
+
+
+}
+.Author-Attribute {
+  margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.Author-Attribute > div{
+  margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  font-size: .7rem;
+  line-height: 1.5rem;
+}
+
+.Pagination {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem 3rem
+}
+.Pagination > div{
+  margin-bottom: 1rem;
+}
+.Pagination .next {
+  margin-left: 1rem;
+}
+.Pagination .previous {
+  margin-right: 1rem;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+}
+
+.next {
+}
+
+.round {
+  border-radius: 50%;
+}
+
+.Header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin: 0rem 3rem
+}
