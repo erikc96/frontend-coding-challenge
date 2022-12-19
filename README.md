@@ -2,6 +2,10 @@
 
 Design and build a small web application to present USGS earthquake data on a map in the browser.
 
+# Loom
+
+[Link To Screen Recording Demo](https://www.loom.com/share/6af4b2f99a954c78af2c229b03db26d0)
+
 ## Requirements
 
 - Frontend logic must be handled using React.
@@ -18,6 +22,6 @@ Design and build a small web application to present USGS earthquake data on a ma
 
 ## Bonuses
 
-- Automatically zoom to the boundary of a country when it is selected.
-- Add a datepicker component to filter earthquakes by a specific date range.
+- [X] Automatically zoom to the boundary of a country when it is selected.
+- [X] Add a datepicker component to filter earthquakes by a specific date range.
 # frontend-coding-challenge
