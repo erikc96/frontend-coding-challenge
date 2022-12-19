@@ -6,10 +6,30 @@ import { useGlobalStateContext } from "../hooks";
 import { Earthquake } from "../types";
 import { EarthquakeDetails } from "./EarthquakeDetails";
 
+export const drawPopup = (map: any, earthquake: Earthquake) => {
+  console.log("drawPopup", earthquake);
+
+  map.fire('closeAllPopups');
+  const popup = new mapboxgl.Popup({ offset: 25 })
+  popup.setLngLat(earthquake.geometry.coordinates as any)
+  const text = ReactDOMServer.renderToString(<EarthquakeDetails earthquake={earthquake || null} />)
+  popup.setHTML(text)
+  popup.addTo(map);
+  // wait 1 second
+  map.on('closeAllPopups', () => {
+    popup.remove();
+  });
+}
+
 // Uses mapbox-gl to render a map
 export const Map = () => {
   const mapContainer = useRef<any>(null);
-  const { earthquakes, selected, setSelected, earthquakeCollection, earthquakesById, mapState: { latitude, longitude, zoom }, setMapState, filteredEarthquakes } = useGlobalStateContext();
+  const { earthquakes, selected, setSelected, earthquakeCollection, earthquakesById, mapState, setMapState, filteredEarthquakes } = useGlobalStateContext();
+  const { latitude, longitude, zoom } = mapState;
+
+  React.useEffect(() => {
+    setMapState({ ...mapState, ref: mapContainer.current });
+  }, [mapContainer.current])
 
   const center = [longitude, latitude] as [number, number];
   const [count, setCount] = useState(0);
@@ -27,7 +47,7 @@ export const Map = () => {
     setCount(count + 1)
   }, [latitude, longitude, zoom]);
 
-  const mapState = useMemo(() => {
+  const mapData = useMemo(() => {
     return {
       ...earthquakeCollection,
       features:
@@ -55,16 +75,18 @@ export const Map = () => {
 
   React.useEffect(() => {
     try {
-      if (!loaded.current) {
-        mapContainer.current.on('load', () => {
-          mapContainer.current.getSource('earthquakes').setData(mapState);
-        });
+      if (mapContainer.current) {
+        if (!loaded.current) {
+          mapContainer.current.on('load', () => {
+            mapContainer.current.getSource('earthquakes').setData(mapData);
+          });
+        }
+        mapContainer.current.getSource('earthquakes').setData(mapData);
       }
-      mapContainer.current.getSource('earthquakes').setData(mapState);
     } catch (e) {
       console.log(e)
     }
-  }, [mapState])
+  }, [mapData])
 
   const popupOpen = useRef(false);
 
@@ -103,7 +125,6 @@ export const Map = () => {
       });
 
       mapContainer.current.on('click', (e: any) => {
-        if (popupOpen.current) return
         const features = mapContainer.current.queryRenderedFeatures(e.point, { layers: ['earthquakes-layer'] });
 
         if (!features.length) {
@@ -116,16 +137,11 @@ export const Map = () => {
         //Use Feature and put your code
         // Populate the popup and set its coordinates
         // based on the feature found.
-        const popup = new mapboxgl.Popup({ offset: 25 })
         const earthquake = earthquakesRef.current.find((earthquake: Earthquake) => (earthquake.id === feature.properties.id))
-        popup.setLngLat(feature.geometry.coordinates)
-        const text = ReactDOMServer.renderToString(<EarthquakeDetails earthquake={earthquake || null} />)
-        popup.setHTML(text)
-        popup.addTo(mapContainer.current);
-        setSelected({ ...selected, earthquakeId: earthquake?.id })
-        popup.on('close', () => {
-          popupOpen.current = false;
-        })
+        if (earthquake) {
+          drawPopup(mapContainer.current, earthquake)
+          setSelected({ ...selected, earthquakeId: earthquake?.id || null })
+        }
       });
 
     })

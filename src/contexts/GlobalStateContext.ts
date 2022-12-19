@@ -1,5 +1,6 @@
 import React from "react";
 import { EMPTY_COLLECTION, initialMapState } from "../constants";
+import { GlobalState } from "../types";
 
 export const GlobalStateContext = React.createContext<GlobalState>({
   earthquakeCollection: EMPTY_COLLECTION,

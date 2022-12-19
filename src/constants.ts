@@ -17,4 +17,4 @@ export const EMPTY_COLLECTION = {
   }
 };
 
-export const initialMapState = { latitude: 42.35, longitude: -70.9, zoom: 3 };
+export const initialMapState = { latitude: 42.35, longitude: -70.9, zoom: 3, ref: null };

@@ -1,6 +1,7 @@
 import React from "react";
 import { useGlobalStateContext, usePagination } from "../hooks";
 import { Earthquake } from "../types";
+import { drawPopup } from "./Map";
 
 export const EarthquakeList = () => {
   const { initialized, filteredEarthquakes, mapState, setMapState, selected, setSelected } = useGlobalStateContext();
@@ -22,8 +23,10 @@ export const EarthquakeList = () => {
         ...selected, earthquakeId: earthquake.id
       })
     }
+    drawPopup(mapState.ref, earthquake)
+
     // setMapState({ ...mapState, longitude, latitude, zoom: 9 })
-  }, [setSelected])
+  }, [setSelected, mapState.ref])
 
   const [paginatedData, getPaginationProps] = usePagination(filteredEarthquakes, 25);
   const {

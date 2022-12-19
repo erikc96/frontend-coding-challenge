@@ -59,6 +59,7 @@ export interface MapState {
   latitude: number;
   longitude: number;
   zoom: number;
+  ref: any;
 }
 
 export interface Selected {
