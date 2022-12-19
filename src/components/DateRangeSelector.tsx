@@ -1,4 +1,4 @@
-import { DateRangePicker } from 'react-date-range';
+import { DateRangePicker } from 'rsuite';
 import { GlobalState } from "../types";
 
 export const DateRangeSelector = ({ filters, setFilters }: { filters: GlobalState["filters"]; setFilters: GlobalState["setFilters"]; }) => {
@@ -10,9 +10,14 @@ export const DateRangeSelector = ({ filters, setFilters }: { filters: GlobalStat
 
   return (
     <div>
+      <label>Date Range</label>
       <DateRangePicker
-        ranges={[selectionRange]}
-        onChange={(ranges) => { console.log("click daternage", { filters }, { ...filters, range: ranges.selected }); setFilters({ ...filters, range: ranges.selected }) }}
+        hoverRange="month" ranges={[]}
+        onChange={(range: any) => {
+          setFilters({
+            ...filters, range: { startDate: range[0], endDate: range[1] }
+          })
+        }}
       />
     </div>
   )

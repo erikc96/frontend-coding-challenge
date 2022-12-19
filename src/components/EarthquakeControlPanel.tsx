@@ -5,6 +5,7 @@ import { DateRangeSelector } from "./DateRangeSelector";
 
 export const EarthquakeControlPanel = () => {
 
+
   const { countries, filters, setFilters, mapState, setMapState } = useGlobalStateContext();
 
   return (

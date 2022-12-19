@@ -1,4 +1,5 @@
 import React from 'react'
+import { Earthquake } from '../types';
 // props and return type for EarthquakeDetails
 type EarthquakeDetailsProps = {
   earthquake: Earthquake | null;

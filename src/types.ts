@@ -1,5 +1,3 @@
-import { Range } from 'react-date-range';
-
 
 export interface EarthquakeProperties {
   [k: string]: (string | number | null);
@@ -52,7 +50,7 @@ export interface RawData {
 export interface Filters {
   country?: string;
   magnitude?: number;
-  range?: Range
+  range?: { startDate: Date, endDate: Date }
 }
 
 export interface MapState {

@@ -5,7 +5,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-
+/** Import styles on demand */
+import 'rsuite/dist/rsuite.min.css'
 
 const container = document.getElementById('root');
 const root = createRoot(container as HTMLElement);
