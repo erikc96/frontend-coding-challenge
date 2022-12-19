@@ -15,11 +15,12 @@ export const EarthquakeDetails: EarhquakeDetailsType = ({ earthquake }) => {
   // and timestamp
   // of the earthquake in a legend and popup marker on the map.
   const { mag: magnitude, title, time } = earthquake.properties;
+  const formattedTimestamp = new Date(time).toLocaleString("en-US", { timeZone: "UTC" });
   return (
     <div className="Earthquake-Details">
-      <div>Magnitude: {magnitude}</div>
-      <div>Title: {title}</div>
-      <div>Timestamp: {new Date(time).toString()}</div>
+      <div><span style={{ fontWeight: 600 }}>Title:</span> {title}</div>
+      <div><span style={{ fontWeight: 600 }}>Magnitude:</span> <span className={"Earthquake-Magnitude-" + Math.floor(earthquake.properties.mag)}>{magnitude}</span></div>
+      <div><span style={{ fontWeight: 600 }}>Date/Time:</span> {formattedTimestamp}</div>
     </div>
   )
 }
